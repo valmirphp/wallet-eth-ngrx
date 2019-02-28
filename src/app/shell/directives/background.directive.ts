@@ -35,7 +35,6 @@ export class BackgroundDirective {
     this.el.nativeElement.style.backgroundImage = `url(/assets/images/bgs/ethereum-background-${this.index}.jpg)`;
     this.index++;
     this.index = this.index > 4 ? 1 : this.index;
-    console.log('nextBg', this.el.nativeElement.style.backgroundImage);
   }
 
 }
