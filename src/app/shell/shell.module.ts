@@ -4,11 +4,13 @@ import {LayoutComponent} from './layout/layout.component';
 import {LayoutModule} from '@angular/cdk/layout';
 import {MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
+import { BackgroundDirective } from './directives/background.directive';
 
 
 @NgModule({
   declarations: [
-    LayoutComponent
+    LayoutComponent,
+    BackgroundDirective
   ],
   imports: [
     CommonModule,
