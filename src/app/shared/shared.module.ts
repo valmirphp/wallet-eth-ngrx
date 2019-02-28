@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule} from "@angular/material";
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule} from '@angular/material';
 
 @NgModule({
   declarations: [],
@@ -16,7 +16,7 @@ import {MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule} from
     MatIconModule,
   ],
 
-  exports:[
+  exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -26,4 +26,5 @@ import {MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule} from
     MatIconModule,
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}

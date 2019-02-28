@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
-import {AccountModel} from "../../../shared/models/account.model";
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {Account} from '../../store/account';
 
 @Component({
   selector: 'we-form-transaction',
@@ -10,18 +10,17 @@ import {AccountModel} from "../../../shared/models/account.model";
 })
 export class FormTransactionComponent implements OnInit {
   public transactionForm: FormGroup;
-  public accounts: AccountModel[] = [
+  public accounts: Account[] = [
     {
-      id:1,
       name: 'My firts account',
       hash: '42342dfds5434jo934r93hj9r',
-      created_at: '11/02/2019'
+      createdAt: '11/02/2019'
     }
-  ]
+  ];
   public state = 'FORM'; // FORM | CONFIRM
-  public selectedAccount: AccountModel;
+  public selectedAccount: Account;
 
-  constructor(private _router: Router) {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
@@ -35,24 +34,24 @@ export class FormTransactionComponent implements OnInit {
       amount: new FormControl('', [Validators.required]),
       pin: new FormControl('', [Validators.required]),
       description: new FormControl('')
-    })
+    });
   }
 
-  changeAccount(ev){
+  changeAccount(ev) {
     this.selectedAccount = ev.value;
     this.transactionForm.get('account_hash').setValue(this.selectedAccount.hash);
   }
 
-  changeToConfirm(){
+  changeToConfirm() {
     this.state = 'CONFIRM';
   }
 
-  changeToForm(){
+  changeToForm() {
     this.state = 'FORM';
   }
 
-  sendTransaction(){
-    this._router.navigate(['/panel/transactions/42342dfds5434jo934r93hj9r/finish'])
+  sendTransaction() {
+    this.router.navigate(['/panel/transactions/42342dfds5434jo934r93hj9r/finish']);
   }
 
 

@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  web3Host: 'http://localhost:8545'
+  apiHost: 'http://localhost:3000',
+  web3Host: 'http://localhost:8545',
 };

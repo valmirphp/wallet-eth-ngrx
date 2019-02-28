@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {AccountModel, TransactionModel} from '../../../shared/models';
+import {TransactionModel} from '../../../shared/models';
+import {Account} from '../../store/account';
 
 @Component({
   selector: 'we-detail-account',
@@ -9,7 +10,7 @@ import {AccountModel, TransactionModel} from '../../../shared/models';
 export class DetailAccountComponent implements OnInit {
 
   public displayedColumns = ['date', 'from', 'description', 'value'];
-  public currentAccount: AccountModel = {
+  public currentAccount: Account = {
     name: 'My firts account',
     hash: '42342dfds5434jo934r93hj9r',
     createdAt: '11/02/2019',

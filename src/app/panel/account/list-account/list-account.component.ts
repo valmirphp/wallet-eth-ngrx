@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {AccountModel} from '../../../shared/models';
+import {Observable} from 'rxjs';
+import {select, Store} from '@ngrx/store';
+import {Account, AccountState, getStepAccount, RequestAccounts, StepAccountEnum, selectAll} from '../../store/account';
 
 @Component({
   selector: 'we-list-account',
@@ -8,25 +10,16 @@ import {AccountModel} from '../../../shared/models';
 })
 export class ListAccountComponent implements OnInit {
 
-  public accounts: AccountModel[] = [
-    {
-      name: 'My firts account',
-      hash: '42342dfds5434jo934r93hj9r',
-      balance: 55,
-      createdAt: '11/02/2019'
-    },
-    {
-      name: 'My firts account',
-      hash: '42342dfds5434jo934r93hj9r',
-      balance: 55,
-      createdAt: '11/02/2019'
-    }
-  ];
+  public step$: Observable<StepAccountEnum>;
+  public accounts$: Observable<Account[]>;
 
-  constructor() {
+  constructor(private store: Store<AccountState>) {
+    this.step$ = this.store.pipe(select(getStepAccount));
+    this.accounts$ = this.store.pipe(select(selectAll));
   }
 
   ngOnInit() {
+    this.store.dispatch(new RequestAccounts());
   }
 
 }

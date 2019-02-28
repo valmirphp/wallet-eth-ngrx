@@ -1,19 +1,24 @@
-
-
-<div class="p-16" fxFlex="">
+<div class="p-16" fxFlex="" [ngSwitch]="step$ | async">
   <h1>Minhas contas</h1>
 
-  <mat-list *ngIf="accounts.length > 0">
-    <mat-list-item *ngFor="let account of accounts" [routerLink]="[account.hash, 'view']">
+  <div *ngSwitchCase="'LOADING'" align="center">
+    <h3 class="secondary-text" style="margin-top: 80px">Carregando...</h3>
+    <mat-spinner color="accent"></mat-spinner>
+  </div>
+
+  <mat-list *ngSwitchCase="'LIST'">
+    <mat-list-item *ngFor="let account of accounts$ | async" [routerLink]="[account.hash, 'view']">
       <h3 matLine> {{account.name}} </h3>
       <p matLine> {{account.hash}} </p>
       <p matLine class="demo-2"> {{account.createdAt}} </p>
     </mat-list-item>
   </mat-list>
 
-  <div *ngIf="!accounts.length">
-    <h3 class="secondary-text">Você ainda não cadastrou nenhuma conta</h3>
+  <div *ngSwitchCase="'EMPTY'" align="center">
+    <h3 class="secondary-text" style="margin-top: 80px">Você ainda não cadastrou nenhuma conta</h3>
+    <button mat-raised-button color="accent" routerLink="create">ADD</button>
   </div>
+
 </div>
 
 <div class="p-8" fxLayout="row" fxLayoutAlign="end end">
