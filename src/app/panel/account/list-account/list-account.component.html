@@ -1,3 +1,23 @@
-<p>
-  list-account works!
-</p>
+
+
+<div class="p-16" fxFlex="">
+  <h1>Minhas contas</h1>
+
+  <mat-list *ngIf="accounts.length > 0">
+    <mat-list-item *ngFor="let account of accounts">
+      <h3 matLine> {{account.name}} </h3>
+      <p matLine> {{account.hash}} </p>
+      <p matLine class="demo-2"> {{message.content}} </p>
+    </mat-list-item>
+  </mat-list>
+
+  <div *ngIf="!accounts.length">
+    <h3 class="secondary-text">Você ainda não cadastrou nenhuma conta</h3>
+  </div>
+</div>
+
+<div class="p-8" fxLayout="row" fxLayoutAlign="end end">
+  <button mat-fab class="fixed-button">
+    <mat-icon aria-label="Create account">add</mat-icon>
+  </button>
+</div>
