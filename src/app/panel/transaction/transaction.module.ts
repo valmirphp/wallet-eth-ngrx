@@ -8,7 +8,7 @@ import {ScannerComponent} from './scanner/scanner.component';
 import {DetailTransactionComponent} from './detail-transaction/detail-transaction.component';
 import {SharedModule} from "../../shared/shared.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
-import {MatSelectModule} from "@angular/material";
+import {MatListModule, MatSelectModule} from "@angular/material";
 
 @NgModule({
   declarations: [
@@ -20,6 +20,7 @@ import {MatSelectModule} from "@angular/material";
     SharedModule,
     TransactionRoutingModule,
     MatSelectModule,
+    MatListModule,
 
     FlexLayoutModule,
   ]

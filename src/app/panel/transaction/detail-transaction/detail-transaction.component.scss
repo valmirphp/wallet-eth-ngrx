@@ -1,0 +1,14 @@
+:host{
+  .mat-list.progress{
+    .mat-list-item mat-icon{
+      color: green;
+    }
+    .mat-list-item[disabled]{
+      opacity: 0.65;
+
+      mat-icon{
+        color: #000;
+      }
+    }
+  }
+}
