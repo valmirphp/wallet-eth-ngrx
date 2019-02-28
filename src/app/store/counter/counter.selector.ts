@@ -1,5 +1,5 @@
 import {createFeatureSelector, createSelector} from '@ngrx/store';
-import {CounterState} from '../reducers';
+import {CounterState} from './counter.reducer';
 
 export const getCounterState = createFeatureSelector<CounterState>('counter');
 

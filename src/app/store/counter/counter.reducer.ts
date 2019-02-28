@@ -1,4 +1,4 @@
-import {ActionTypes, CounterActions} from '../actions';
+import {ActionTypes, CounterActions} from './counter.action';
 
 export interface CounterState {
   clicks: number;
