@@ -1,3 +1,88 @@
-<p>
-  form-transaction works!
-</p>
+<div class="p-16" fxFlex="">
+
+
+  <form [formGroup]="transactionForm" (ngSubmit)="sendTransaction()" >
+        <div *ngIf="state === 'FORM'" fxLayout="column">
+          <h1>Enviar</h1>
+
+          <h3>Origem</h3>
+          <mat-form-field>
+            <mat-select formControlName="account_hash" placeholder="Selecionar conta">
+              <mat-option *ngFor="let account of accounts" [value]="account.hash">
+                {{account.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <br>
+          <h3>Destinatário</h3>
+          <div fxLayout="row">
+            <mat-form-field>
+              <input matInput name="name"
+                     placeholder="Endereço hash"
+                     formControlName="recipient_hash"
+                     required
+                     type="text">
+            </mat-form-field>
+
+            <button [routerLink]="['../share']" mat-icon-button>
+              <mat-icon>share</mat-icon>
+            </button>
+          </div>
+
+          <br>
+          <h3>Envio</h3>
+          <mat-form-field>
+            <input matInput name="amount"
+                   placeholder="Valor"
+                   formControlName="amount"
+                   required
+                   type="number">
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea matInput formControlName="description" placeholder="Descrição"></textarea>
+          </mat-form-field>
+
+
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <button type="button" (click)="changeToConfirm()" mat-raised-button color="accent">
+              Próximo
+            </button>
+          </div>
+        </div>
+
+
+    <div *ngIf="state === 'CONFIRM'" fxLayout="column">
+      <h1>Confirmar</h1>
+
+      <p>
+        Origem: <b>Conta Name</b> - <b>conta hash</b>
+      </p>
+      <p>
+        Destintário: <b>Conta Name</b> - <b>conta hash</b>
+      </p>
+      <p>
+        Valor: <b>3444</b>
+      </p>
+
+      <p>
+        Descrição: dasda
+      </p>
+
+      <mat-form-field>
+        <input matInput name="pin"
+               placeholder="PIN Conta"
+               formControlName="pin"
+               required
+               type="password">
+      </mat-form-field>
+
+      <button type="submit" mat-raised-button color="accent" [disabled]="transactionForm.invalid">
+        Enviar
+      </button>
+
+    </div>
+  </form>
+</div>
+

@@ -13,6 +13,10 @@ const routes: Routes = [
         loadChildren: './account/account.module#AccountModule'
       },
       {
+        path: 'transactions',
+        loadChildren: './transaction/transaction.module#TransactionModule'
+      },
+      {
         path: '',
         redirectTo: 'accounts',
         pathMatch: 'full',
