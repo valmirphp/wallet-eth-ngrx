@@ -33,6 +33,14 @@
   padding: 0;
 }
 
+.flex-box-bg{
+  width: 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-color: rgb(14, 27, 33);
+  background-position: center center;
+}
+
 :host{
   display: flex;
   flex: 1 0 auto;

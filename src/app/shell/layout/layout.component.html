@@ -1,5 +1,5 @@
 
-<div class="fullbox" weBackground>
+<div fxLayout="row" fxLayoutAlign="none strech" class="fullbox" >
 
 <mat-sidenav-container class="sidenav-container" >
 
@@ -43,4 +43,7 @@
   </mat-sidenav-content>
 </mat-sidenav-container>
 
+  <div  [fxShow.gt-xs]="true" class="flex-box-bg" fxFlex="" weBackground>
+
+  </div>
 </div>
