@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AccountModel} from "../account.model";
+import {AccountModel} from "../../../shared/models/account.model";
 
 @Component({
   selector: 'we-list-account',
