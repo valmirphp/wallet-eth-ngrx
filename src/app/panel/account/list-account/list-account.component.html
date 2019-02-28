@@ -4,7 +4,7 @@
   <h1>Minhas contas</h1>
 
   <mat-list *ngIf="accounts.length > 0">
-    <mat-list-item *ngFor="let account of accounts">
+    <mat-list-item *ngFor="let account of accounts" [routerLink]="[account.hash, 'view']">
       <h3 matLine> {{account.name}} </h3>
       <p matLine> {{account.hash}} </p>
       <p matLine class="demo-2"> {{account.created_at}} </p>
@@ -17,7 +17,7 @@
 </div>
 
 <div class="p-8" fxLayout="row" fxLayoutAlign="end end">
-  <button mat-fab class="fixed-button">
+  <button routerLink="create" mat-fab class="fixed-button">
     <mat-icon aria-label="Create account">add</mat-icon>
   </button>
 </div>

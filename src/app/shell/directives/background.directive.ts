@@ -19,7 +19,6 @@ export class BackgroundDirective {
 
   private setupBg(): void {
     this.el.nativeElement.style.transition = 'background-image 1s ease-in-out';
-    this.el.nativeElement.style.backgroundSize = 'cover';
 
 
     this.nextBackground();

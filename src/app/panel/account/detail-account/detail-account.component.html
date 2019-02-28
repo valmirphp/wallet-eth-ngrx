@@ -1,3 +1,68 @@
-<p>
-  detail-account works!
-</p>
+<div class="p-16" fxFlex="">
+  <div fxLayout="row" fxLayoutAlign="space-between start">
+    <div >
+      <h1 class="m-0">{{currentAccount.name}}</h1>
+      <small>{{currentAccount.hash}}</small>
+    </div>
+    <button [routerLink]="['../share']" mat-icon-button>
+      <mat-icon>share</mat-icon>
+    </button>
+  </div>
+
+  <div fxLayout="column" fxLayoutAlign="center end">
+    <small>Saldo</small>
+    <h1 class="m-0">{{currentAccount.saldo}}</h1>
+
+  </div>
+
+  <mat-table #table [dataSource]="transactions">
+
+    <!-- date Column -->
+    <ng-container cdkColumnDef="date">
+      <mat-header-cell  *cdkHeaderCellDef>Data</mat-header-cell>
+      <mat-cell  *cdkCellDef="let transaction">
+        {{transaction.updated_at}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- from Column -->
+    <ng-container cdkColumnDef="from">
+      <mat-header-cell *cdkHeaderCellDef>Destino</mat-header-cell>
+      <mat-cell *cdkCellDef="let transaction">
+        <div fxLayout="column">
+          <b>{{transaction.recipient.name}}</b>
+          <small>{{transaction.recipient.hash}}</small>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <!-- description Column -->
+    <ng-container cdkColumnDef="description">
+      <mat-header-cell *cdkHeaderCellDef fxHide fxShow.gt-sm>Descrição</mat-header-cell>
+      <mat-cell *cdkCellDef="let transaction" fxHide fxShow.gt-sm>
+        <small>{{transaction.description}}</small>
+      </mat-cell>
+    </ng-container>
+
+    <!-- value Column -->
+    <ng-container cdkColumnDef="value">
+      <mat-header-cell *cdkHeaderCellDef fxHide fxShow.gt-sm>Valor</mat-header-cell>
+      <mat-cell *cdkCellDef="let transaction" fxHide fxShow.gt-sm>
+        <p class="email text-truncate">
+          {{transaction.amount}}
+        </p>
+      </mat-cell>
+    </ng-container>
+
+
+
+    <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *cdkRowDef="let transaction; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+  <div fxLayout="row" fxLayoutAlign="center center" *ngIf="!transactions.length">
+    <span>Nenhuma transação encontrada para esta conta</span>
+  </div>
+</div>
+

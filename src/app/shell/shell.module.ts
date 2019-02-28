@@ -5,6 +5,7 @@ import {LayoutModule} from '@angular/cdk/layout';
 import {MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
 import { BackgroundDirective } from './directives/background.directive';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { BackgroundDirective } from './directives/background.directive';
   imports: [
     CommonModule,
     RouterModule,
+    FlexLayoutModule,
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
