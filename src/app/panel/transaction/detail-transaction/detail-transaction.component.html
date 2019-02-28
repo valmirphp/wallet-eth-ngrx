@@ -1,3 +1,49 @@
-<p>
-  detail-transaction works!
-</p>
+<div class="p-16" fxFlex="">
+  <h1>Envio realizado</h1>
+
+  <p>
+    Origem: <b>{{transaction.to}}</b>
+  </p>
+  <p>
+    Destintário: <b>{{transaction.recipient.hash}}</b>
+  </p>
+  <p>
+    Valor: <b>{{transaction.amaunt}}</b>
+  </p>
+
+  <p>
+    Descrição: {{transaction.description}}
+  </p>
+  <p>
+    Data: <b>{{transaction.date}}</b>
+  </p>
+  <p>
+    Txid: <b>{{transaction.txid}}</b>
+  </p>
+
+  <mat-list class="progress">
+    <mat-list-item >
+      <mat-icon matListIcon>send</mat-icon>
+      <h3 matLine> Enviado </h3>
+      <p matLine>
+        <span class="demo-2"> 12/12/2018 15:00 </span>
+      </p>
+    </mat-list-item>
+
+    <mat-list-item disabled="">
+      <mat-icon matListIcon>cached</mat-icon>
+      <h3 matLine> Processando pagamento </h3>
+      <p matLine>
+        <span class="demo-2"> 12/12/2018 15:00 </span>
+      </p>
+    </mat-list-item>
+
+    <mat-list-item disabled="" >
+      <mat-icon matListIcon>check_circle</mat-icon>
+      <h3 matLine> Envio finalizado</h3>
+      <p matLine>
+        <span class="demo-2"> 12/12/2018 15:00 </span>
+      </p>
+    </mat-list-item>
+  </mat-list>
+</div>

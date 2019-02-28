@@ -7,6 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailTransactionComponent implements OnInit {
 
+  public transaction = {
+    recipient: {
+      hash: 'sdfsdfsd'
+    },
+    to: 'Account name',
+    amaunt: 300,
+    date: '12/12/2018',
+    description: 'ddsadas',
+    txid: 'dasdsa',
+    status: 'finalizado'
+  };
+
   constructor() { }
 
   ngOnInit() {
