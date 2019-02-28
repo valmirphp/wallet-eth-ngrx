@@ -7,8 +7,8 @@
 
           <h3>Origem</h3>
           <mat-form-field>
-            <mat-select formControlName="account_hash" placeholder="Selecionar conta">
-              <mat-option *ngFor="let account of accounts" [value]="account.hash">
+            <mat-select (selectionChange)="changeAccount($event)" placeholder="Selecionar conta">
+              <mat-option *ngFor="let account of accounts" [value]="account">
                 {{account.name}}
               </mat-option>
             </mat-select>
@@ -46,7 +46,7 @@
 
 
           <div fxLayout="row" fxLayoutAlign="center center">
-            <button type="button" (click)="changeToConfirm()" mat-raised-button color="accent">
+            <button [disabled]="transactionForm.get('account_hash').invalid || transactionForm.get('amount').invalid || transactionForm.get('recipient_hash').invalid" type="button" (click)="changeToConfirm()" mat-raised-button color="accent">
               Próximo
             </button>
           </div>
@@ -57,17 +57,17 @@
       <h1>Confirmar</h1>
 
       <p>
-        Origem: <b>Conta Name</b> - <b>conta hash</b>
+        Origem: <b>{{selectedAccount.name}}</b> - <b>{{selectedAccount.hash}}</b>
       </p>
       <p>
-        Destintário: <b>Conta Name</b> - <b>conta hash</b>
+        Destintário: <b>{{transactionForm.get('account_hash').value}}</b>
       </p>
       <p>
-        Valor: <b>3444</b>
+        Valor: <b>{{transactionForm.get('amount').value}}</b>
       </p>
 
       <p>
-        Descrição: dasda
+        Descrição: {{transactionForm.get('description').value}}
       </p>
 
       <mat-form-field>
@@ -78,10 +78,16 @@
                type="password">
       </mat-form-field>
 
-      <button type="submit" mat-raised-button color="accent" [disabled]="transactionForm.invalid">
-        Enviar
-      </button>
 
+
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <button type="button" (click)="changeToForm()" mat-stroked-button color="accent">
+          Voltar
+        </button>
+        <button type="submit" mat-raised-button color="accent" [disabled]="transactionForm.invalid">
+          Enviar
+        </button>
+      </div>
     </div>
   </form>
 </div>

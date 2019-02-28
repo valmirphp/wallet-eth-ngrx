@@ -10,18 +10,22 @@ import {AccountModel} from "../../../shared/models/account.model";
 })
 export class FormTransactionComponent implements OnInit {
   public transactionForm: FormGroup;
-  public accounts: AccountModel[];
+  public accounts: AccountModel[] = [
+    {
+      id:1,
+      name: 'My firts account',
+      hash: '42342dfds5434jo934r93hj9r',
+      created_at: '11/02/2019'
+    }
+  ]
   public state = 'FORM'; // FORM | CONFIRM
+  public selectedAccount: AccountModel;
 
   constructor(private _router: Router) {
   }
 
   ngOnInit() {
     this._buildForm();
-  }
-
-  public saveAccount() {
-    this._router.navigate(['/panel/accounts/42342dfds5434jo934r93hj9r/view'])
   }
 
   private _buildForm(): void {
@@ -34,11 +38,22 @@ export class FormTransactionComponent implements OnInit {
     })
   }
 
+  changeAccount(ev){
+    this.selectedAccount = ev.value;
+    this.transactionForm.get('account_hash').setValue(this.selectedAccount.hash);
+  }
+
   changeToConfirm(){
     this.state = 'CONFIRM';
   }
 
-  sendTransaction(){
-
+  changeToForm(){
+    this.state = 'FORM';
   }
+
+  sendTransaction(){
+    this._router.navigate(['/panel/transactions/42342dfds5434jo934r93hj9r/finish'])
+  }
+
+
 }
