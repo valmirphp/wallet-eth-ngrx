@@ -3,7 +3,8 @@ import Web3 from 'web3';
 import {Account} from '../../panel/store/account';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +17,17 @@ export class W3Service {
     this.web3 = new Web3(new Web3.providers.HttpProvider(environment.web3Host));
   }
 
-  createAccount(name: string, password: string): Promise<Account> {
+  createAccount(name: string, password: string): Observable<Account> {
     const acc = this.web3.eth.accounts.create(password);
 
-    return Promise.resolve({
+    const account: Account = {
       name,
-      hash: acc.address
-    } as Account);
+      hash: acc.address,
+      createdAt: (new Date()).toString()
+    };
+
+    return this.http.post(`${environment.apiHost}/accounts`, account)
+      .pipe(map(a => account));
   }
 
   getAccounts(): Promise<string[]> {

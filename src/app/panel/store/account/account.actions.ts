@@ -4,6 +4,7 @@ import {Account} from './account.model';
 
 export enum AccountActionTypes {
   RequestAccounts = '[Account] Request Accounts',
+  RequestCreateAccount = '[Account] Request create Accounts',
   LoadAccounts = '[Account] Load Accounts',
   AddAccount = '[Account] Add Account',
   UpsertAccount = '[Account] Upsert Account',
@@ -18,6 +19,13 @@ export enum AccountActionTypes {
 
 export class RequestAccounts implements Action {
   readonly type = AccountActionTypes.RequestAccounts;
+}
+
+export class RequestCreateAccount implements Action {
+  readonly type = AccountActionTypes.RequestCreateAccount;
+
+  constructor(public payload: { name: string, pin: string }) {
+  }
 }
 
 export class LoadAccounts implements Action {
