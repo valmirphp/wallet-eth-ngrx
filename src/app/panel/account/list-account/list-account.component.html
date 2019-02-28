@@ -7,7 +7,7 @@
     <mat-list-item *ngFor="let account of accounts">
       <h3 matLine> {{account.name}} </h3>
       <p matLine> {{account.hash}} </p>
-      <p matLine class="demo-2"> {{message.content}} </p>
+      <p matLine class="demo-2"> {{account.created_at}} </p>
     </mat-list-item>
   </mat-list>
 

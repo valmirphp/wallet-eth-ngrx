@@ -1,5 +1,8 @@
-<mat-sidenav-container class="sidenav-container">
+<div weBackground>
+
+<mat-sidenav-container class="sidenav-container" >
   <!--[opened]="!(isHandset$ | async)"-->
+
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
                [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
@@ -38,3 +41,5 @@
 
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+</div>
