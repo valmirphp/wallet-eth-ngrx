@@ -11,7 +11,7 @@
 
   <div fxLayout="column" fxLayoutAlign="center end">
     <small>Saldo</small>
-    <h1 class="m-0">{{currentAccount.saldo}}</h1>
+    <h1 class="m-0">{{currentAccount.balance}}</h1>
 
   </div>
 
@@ -21,7 +21,7 @@
     <ng-container cdkColumnDef="date">
       <mat-header-cell  *cdkHeaderCellDef>Data</mat-header-cell>
       <mat-cell  *cdkCellDef="let transaction">
-        {{transaction.updated_at}}
+        {{transaction.updatedAt}}
       </mat-cell>
     </ng-container>
 

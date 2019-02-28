@@ -1,6 +1,6 @@
 export interface TransactionModel {
   id: number;
-  updated_at: string
+  updatedAt: string;
   recipient: {
     name: string,
     hash: string

@@ -18,7 +18,7 @@
   z-index: 1;
 }
 
-.mat-nav-list .mat-list-item.active{
+.mat-nav-list .mat-list-item.active {
   background: red;
 }
 
@@ -33,15 +33,15 @@
   padding: 0;
 }
 
-.flex-box-bg{
+.flex-box-bg {
   width: 100%;
-  background-size: 100%;
+  background-size: cover; /** 100% */
   background-repeat: no-repeat;
   background-color: rgb(14, 27, 33);
   background-position: center center;
 }
 
-:host{
+:host {
   display: flex;
   flex: 1 0 auto;
   width: 100%;

@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import Web3 from 'web3';
+import {AccountModel} from '../models';
 import {environment} from '../../../environments/environment';
 
 @Injectable({
@@ -13,8 +14,13 @@ export class W3Service {
     this.web3 = new Web3(new Web3.providers.HttpProvider(environment.web3Host));
   }
 
-  createAccount(entropy?: string): Account {
-    return this.web3.eth.accounts.create(entropy);
+  createAccount(name: string, password: string): Promise<AccountModel> {
+    const acc = this.web3.eth.accounts.create(password);
+
+    return Promise.resolve({
+      name,
+      hash: acc.address
+    } as AccountModel);
   }
 
   getAccounts(): Promise<string[]> {

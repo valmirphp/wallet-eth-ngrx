@@ -1,31 +1,33 @@
 <div class="p-16" fxFlex="">
   <h1>Nova conta</h1>
 
-  <form [formGroup]="accountForm" (ngSubmit)="saveAccount()" fxLayout="column">
+  <form [formGroup]="accountForm" (ngSubmit)="saveAccount()" fxLayout="column" autocomplete="off">
     <mat-form-field>
       <input matInput name="name"
              placeholder="Nome"
              formControlName="name"
-             required
-             type="text">
+             autocomplete="disabled"
+             type="text"
+             required>
     </mat-form-field>
 
     <mat-form-field>
       <input matInput name="name"
              placeholder="Senha PIN"
              formControlName="pin"
-             required
-             type="password">
+             autocomplete="new-password"
+             type="password"
+             required>
     </mat-form-field>
 
-   <div fxLayout="row" fxLayoutAlign="space-between center">
-     <button routerLink="/panel/accounts" mat-stroked-button color="primary">
-       Voltar
-     </button>
-     <button [disabled]="accountForm.invalid" mat-raised-button color="accent">
-       Criar conta
-     </button>
-   </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <button routerLink="/panel/accounts" mat-stroked-button color="primary">
+        Voltar
+      </button>
+      <button [disabled]="accountForm.invalid" mat-raised-button color="accent">
+        Criar conta
+      </button>
+    </div>
   </form>
 </div>
 

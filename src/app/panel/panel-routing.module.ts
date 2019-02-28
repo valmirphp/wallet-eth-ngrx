@@ -2,17 +2,12 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {LayoutComponent} from '../shell/layout/layout.component';
 import {ShellModule} from '../shell/shell.module';
-import {DemoComponent} from './demo/demo.component';
 
 const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
     children: [
-      {
-        path: 'demo',
-        component: DemoComponent
-      },
       {
         path: 'accounts',
         loadChildren: './account/account.module#AccountModule'

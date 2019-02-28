@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'we-form-account',
@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 export class FormAccountComponent implements OnInit {
   public accountForm: FormGroup;
 
-  constructor(private _router: Router) {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
@@ -18,14 +18,14 @@ export class FormAccountComponent implements OnInit {
   }
 
   public saveAccount() {
-    this._router.navigate(['/panel/accounts/42342dfds5434jo934r93hj9r/view'])
+    this.router.navigate(['/panel/accounts/42342dfds5434jo934r93hj9r/view']);
   }
 
   private _buildForm(): void {
     this.accountForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
       pin: new FormControl('', [Validators.required])
-    })
+    });
   }
 
 }
