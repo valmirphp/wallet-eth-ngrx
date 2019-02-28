@@ -1,3 +1,31 @@
-<p>
-  form-account works!
-</p>
+<div class="p-16" fxFlex="">
+  <h1>Nova conta</h1>
+
+  <form [formGroup]="accountForm" (ngSubmit)="saveAccount()" fxLayout="column">
+    <mat-form-field>
+      <input matInput name="name"
+             placeholder="Nome"
+             formControlName="name"
+             required
+             type="text">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="name"
+             placeholder="Senha PIN"
+             formControlName="pin"
+             required
+             type="password">
+    </mat-form-field>
+
+   <div fxLayout="row" fxLayoutAlign="space-between center">
+     <button routerLink="/panel/accounts" mat-stroked-button color="primary">
+       Voltar
+     </button>
+     <button [disabled]="accountForm.invalid" mat-raised-button color="accent">
+       Criar conta
+     </button>
+   </div>
+  </form>
+</div>
+
